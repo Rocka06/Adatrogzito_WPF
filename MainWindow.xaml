@@ -1,0 +1,54 @@
+﻿<Window x:Class="Adatrogzito_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Adatrogzito_WPF"
+        mc:Ignorable="d"
+        Title="Adatrögzítő" Height="600" Width="300">
+    <DockPanel>
+        <TabControl>
+            <TabItem Header="Új adat">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Név:"/>
+                    <TextBox x:Name="NameTextBox" Margin="0,5,0,15"/>
+
+                    <TextBlock Text="Kor:"/>
+                    <TextBox x:Name="AgeTextBox" PreviewTextInput="NumberOnly" Margin="0,5,0,15"/>
+
+                    <TextBlock Text="Email:"/>
+                    <TextBox x:Name="EmailTextBox" Margin="0,5,0,15"/>
+
+                    <TextBlock Text="Telefonszám:"/>
+                    <TextBox x:Name="MobileTextBox" PreviewTextInput="NumberOnly" Margin="0,5,0,15"/>
+
+                    <TextBlock Text="Cím:"/>
+                    <TextBox x:Name="AddressTextBox" Margin="0,5,0,15"/>
+
+                    <TextBlock Text="Nem:"/>
+                    <ComboBox x:Name="GenderTextBox" Margin="0,5,0,15" SelectedIndex="0">
+                        <ComboBoxItem Content="Férfi"/>
+                        <ComboBoxItem Content="Nő"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Megjegyzés:"/>
+                    <RichTextBox x:Name="DescTextBox" MinHeight="100">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+
+                    <Button Content="Adatok mentése" Click="SaveButton_Click" Width="150" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+                    <Label Content="" x:Name="ErrorLabel"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Adatok listája">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="DataList" SelectionChanged="DataList_SelectionChanged" IsVisibleChanged="DataList_IsVisibleChanged" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>
